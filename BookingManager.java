@@ -38,7 +38,7 @@ public class BookingManager {
         booking.setDate(date);
 
         //printing all the information gathered
-        booking.printTotal();
+        //booking.printTotal();
 
         boolean moreEvents = true;
 while (moreEvents) {
@@ -54,6 +54,8 @@ while (moreEvents) {
         booking.addEvent(event);
     }
 }
+
+booking.printTotal();
 
 }
 
