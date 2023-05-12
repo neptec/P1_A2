@@ -1,5 +1,7 @@
 import java.util.*;
 
+import javafx.event.Event;
+
 public class BookingManager {
     public static void stage1(EventToBook event){
         Scanner scanner= new Scanner(System.in);
@@ -22,9 +24,38 @@ public class BookingManager {
         int getCost = pricePerPerson*numOfPeople;
         System.out.println(eventTitle + ": " + pricePerPerson + " @ $" + numOfPeople + " = $" + getCost);
     }
-    public static void stage2(Booking booking){
 
+    public static void stage2(Booking booking){
+        Scanner scanner = new Scanner(System.in);
+        //prompting for the name of customer
+        System.out.println("Enter name of the customer:");
+        String name = scanner.nextLine();
+        booking.setCustomerName(name);
+        
+        //prompting for the date of event
+        System.out.println("Enter the current date:");
+        String date = scanner.nextLine();
+        booking.setDate(date);
+
+        //printing all the information gathered
+        booking.printTotal();
+
+        boolean moreEvents = true;
+while (moreEvents) {
+    // Ask the user if they want to add more events
+    System.out.println("Add more? (Y/N)");
+    String answer = scanner.nextLine();
+    moreEvents = answer.equalsIgnoreCase("y");
+
+    // If the user wants to add more events, call the stage1 method
+    if (moreEvents) {
+        EventToBook event = new EventToBook();
+        stage1(event);
+        booking.addEvent(event);
     }
+}
+
+}
 
     public static void stage3(Booking booking){
 
