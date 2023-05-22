@@ -1,52 +1,33 @@
 public class EventToBook {
-    private String eventTitle;
-    private int pricePerPerson;
-    private int numOfPeople;
+    private String title;         // Stores the title of the event
+    private int quantity;         // Stores the quantity of participants for the event
+    private int costPerHead;      // Stores the cost per participant for the event
 
-    public EventToBook() {
-        this.eventTitle = "none";
-        this.pricePerPerson = 0;
-        this.numOfPeople = 0;
+    public EventToBook(String title, int quantity, int costPerHead) {
+        this.title = title;                  // Set the title of the event from the parameter
+        this.quantity = quantity;            // Set the quantity of participants from the parameter
+        this.costPerHead = costPerHead;      // Set the cost per participant from the parameter
     }
 
-    public EventToBook(String title, int price, int quantity) {
-        this.eventTitle = title;
-        this.pricePerPerson = price;
-        this.numOfPeople = quantity;
+    public String getTitle() {
+        return title;         // Returns the title of the event
     }
 
-    public String getEventTitle() {
-        return eventTitle;
+    public int getQuantity() {
+        return quantity;      // Returns the quantity of participants for the event
     }
 
-    public void setEventTitle(String eventTitle) {
-        this.eventTitle = eventTitle;
-    }
-
-    public int getPricePerPerson() {
-        return pricePerPerson;
-    }
-
-    public void setPricePerPerson(int pricePerPerson) {
-        this.pricePerPerson = pricePerPerson;
-    }
-
-    public int getNumOfPeople() {
-        return numOfPeople;
-    }
-
-    public void setNumOfPeople(int numOfPeople) {
-        this.numOfPeople = numOfPeople;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;   // Updates the quantity of participants for the event
     }
 
     public int getCost() {
-        return pricePerPerson * numOfPeople;
+        return quantity * costPerHead;   // Calculates and returns the total cost for the event
     }
 
     @Override
     public String toString() {
-        String paddedTitle = String.format("%-20s", eventTitle);
-        int totalCost = getCost();
-        return paddedTitle + ": " + numOfPeople + " @ $" + pricePerPerson + " = $" + totalCost;
+        return "Event: " + title + ", Participants: " + quantity + ", Cost: $" + getCost();
+        // Returns a string representation of the event, including title, participants, and cost
     }
 }
